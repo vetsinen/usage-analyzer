@@ -3,11 +3,13 @@ const handleError = require('./error-handling');
 
 /**
  * @description extract message ids
- * @param {string} file to extract message ids
+ * @param {string} text to extract message ids
  * @returns {array}
  */
-function getIdsFromFile(file){
-
+function getIdsFromText(text){
+    return []
 }
 
-getIdsFromFile()
+console.log(getIdsFromText())
+
+module.exports = getIdsFromText
