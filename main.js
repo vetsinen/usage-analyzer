@@ -6,8 +6,8 @@ const handleError = require('./error-handling');
  * @param {string} text to extract message ids
  * @returns {array}
  */
-function getIdsFromText(text){
-    return []
+function getIdsFromText(text = "I love JavaScript"){
+    return text.match(/Java(Script)/)
 }
 
 console.log(getIdsFromText())
