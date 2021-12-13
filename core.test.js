@@ -1,5 +1,5 @@
 const planize = require('./planize')
-const {getCodesFromJsFragment, getIdsFromText} = require("./main");
+const {getCodesFromJsFragment, getIdsFromText} = require("./core");
 
 test('get false for contentless code', () => {
     const clcode = "ror(req, res, {\n                customMessageId: `grandid_error_${grandIdResponse.errorObject.code}`,\n                code: grandIdResponse.errorObject.statusCode\n            })"
