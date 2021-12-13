@@ -1,28 +1,20 @@
-const fs = require('fs-extra');
-const handleError = require('./error-handling');
-const planize = require('./planize')
+//core module
 
 /**
  *
  * @param {string} jscode
- * @returns {object}
- * example: {
-        customMessageId: 'incorrect_tenant',
-        code: 401
-    }
+ * @returns {string}
+ * example: 'incorrect_tenant'
  * @description return codeid and messagetext from js-fragment
  */
 function getCodesFromJsFragment(jscode){
-    let msg, codeid
+    let msg
     try {
-        msg = jscode.match(/customMessageId: '(.*?)'/)[1]
-        codeid = +jscode.match(/code: (\d+)/)[1]
+        msg = jscode.match(/customMessageId: [`'](.*?)[`']/)[1]
+        //codeid = +jscode.match(/code: (\d+)/)[1]
     }
     catch (e) {return false}
-    return {
-        customMessageId: msg,
-        code: codeid
-    }
+    return msg
 }
 
 /**
@@ -31,7 +23,7 @@ function getCodesFromJsFragment(jscode){
  * @returns {array}
  */
 function getIdsFromText(text){
-    const regexpPattern = /ror\(req, res, {.*?code: .*?}\)/gs
+    const regexpPattern = /handleError\(req, *?res, *?{.*?code: .*?}\)/gs
     const matches = Array.from(text.matchAll(regexpPattern))
     const candidates = matches.map( el=> el[0])
     let rez = []
@@ -43,11 +35,4 @@ function getIdsFromText(text){
 }
 
 module.exports = {getCodesFromJsFragment, getIdsFromText}
-
-console.log(getIdsFromText(planize('./usage-example.js')));
-// const clcode = "ror(req, res, {\n                customMessageId: `grandid_error_${grandIdResponse.errorObject.code}`,\n                code: grandIdResponse.errorObject.statusCode\n            })"
-// const cfcode = "ror(req, res, {\n                customMessageId: 'incorrect_tenant',\n                code: 401\n            })"
-// console.log(getCodesFromJsFragment(cfcode))
-// let rez = getIdsFromText(planize('/usage-example.js'))
-// console.log(rez[0])//(JSON.stringify(rez[1]))
 

@@ -6,14 +6,10 @@
   "scripts": {
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vetsinen/usage-analyzer.git"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fs-extra": "^10.0.0"
+    "browse-directory": "^0.0.3"
   },
   "devDependencies": {
     "jest": "^27.4.4"
