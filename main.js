@@ -8,7 +8,7 @@ const planize = require('./planize')
  * @returns {array}
  */
 function getIdsFromText(text = "I love JavaScript"){
-    const regexpPattern = /return handleError* }\)$/
+    const regexpPattern = /ror\(req, res, {.*?code:.*?}/gs
     const matches = Array.from(text.matchAll(regexpPattern))
     return matches.length
 }
