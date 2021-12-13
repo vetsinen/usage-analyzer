@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 function planize(fileurl) {
-    return fs.readFileSync("./usage-example.js", 'utf-8');
+    return fs.readFileSync(fileurl, 'utf-8');
 }
 
 //console.log(typeof planize('./usage-example.js'))
