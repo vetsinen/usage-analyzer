@@ -13,6 +13,8 @@ for (file of dirFiles){
         if (rez.length>0){msgids = msgids.concat(rez)}
     }
 }
+
+msgids = Array.from(new Set(msgids))
 console.log(JSON.stringify(msgids))
 fs.writeFile("./messageids.txt", JSON.stringify(msgids), function(err) {
     if(err) {
